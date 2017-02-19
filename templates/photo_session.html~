@@ -1,0 +1,16 @@
+<html>
+<head>
+<link rel="stylesheet" href='/static/style.css' />
+</head>
+<body>
+<div style="text-align: center"><h1>Photo-Session</h1></div>
+<br>
+Session: {{sessions}}
+<br>
+Photo: {{photo_id}}
+<br>
+<form action="{{ url_for('photo_session',int(photo_id)+1)) }}" method=post>
+	<div style="text-align: center"><button name="btn_start" type="submit">Nächstes Foto!</button></div>
+</form>
+</body>
+</html>

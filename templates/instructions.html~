@@ -1,0 +1,14 @@
+<html>
+<head>
+<link rel="stylesheet" href='/static/style.css' />
+</head>
+<body>
+<div style="text-align: center"><h1>Anleitung</h1></div>
+<br>
+blablabla
+<br>
+<form action="{{ url_for('photo_session',photo_id=0) }}" method=post>
+	<div style="text-align: center"><button name="btn_start" type="submit">Fotos machen!</button></div>
+</form>
+</body>
+</html>

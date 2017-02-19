@@ -1,0 +1,13 @@
+<html>
+<head>
+<link rel="stylesheet" href='/static/style.css' />
+</head>
+<body>
+<div style="text-align: center"><h1>Willkommen bei der Photobox!</h1></div>
+<br>
+<br>
+<form action="{{ url_for('instructions') }}" method=post>
+	<button name="btn_start" value="Los geht's!" type="submit"></button>
+</form>
+</body>
+</html>
