@@ -17,7 +17,7 @@ def index():
     return render_template('index.html')
 
 ## Instructions prior to each Photo-Session
-@app.route('/instructions/', methods=['POST'])
+@app.route('/instructions/')
 def instructions():
     global sessions
     sessions=sessions+1
@@ -28,7 +28,7 @@ def instructions():
 def photo_session(photo_id):
     templateData = {
       'session_id' : sessions,
-      'photo_id': photo_id,
+      'photo_id': int(photo_id)+1,
       'countdown': countdown_duration,
       'max_photos': photos_per_session
       }
@@ -37,7 +37,7 @@ def photo_session(photo_id):
 ## Window to select which photos to print
 @app.route('/printselection/', methods=['POST'])
 def print_selection():
-    return render_template('print.html', session_id=sessions)
+    return render_template('print.html', num_photos=photos_per_session)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')

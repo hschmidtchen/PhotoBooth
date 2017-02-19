@@ -1,0 +1,16 @@
+<html>
+<head>
+<link rel="stylesheet" href='/static/style.css' />
+</head>
+<body>
+<div style="text-align: center"><h1>Photo-Session</h1></div>
+<br>
+#Photos: {{num_photos}}
+<br>
+
+<form action="{{ url_for('index') }}">
+	<div style="text-align: center"><input value="Drucken!" type="submit"></input></div>
+</form>
+
+</body>
+</html>

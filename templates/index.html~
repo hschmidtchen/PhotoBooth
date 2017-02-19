@@ -7,7 +7,7 @@
 <br>
 <br>
 <form action="{{ url_for('instructions') }}" method=post>
-	<button name="btn_start" value="Los geht's!" type="submit"></button>
+	<div style="text-align: center"><button name="btn_start" type="submit">Los Geht's!</button></div>
 </form>
 </body>
 </html>
