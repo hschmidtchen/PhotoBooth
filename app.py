@@ -1,15 +1,32 @@
+import os
+import sqlite3
 from flask import Flask, render_template
 import datetime
 
-app = Flask(__name__)
+app = Flask(__name__) #create app instance
+app.config.from_object(__name__) #load config from this file
+
+## Load default config and override config from an environment variable 
+app.config.update(dict(
+    DATABASE=os.path.join(app.root_path, 'photobooth.db'),
+    SECRET_KEY='devkey',
+    USERNAME='admin',
+    PASSWORD='default',
+    photos_per_session = 3,
+    countdown_duration = 5
+))
+app.config.from_envvar('PHOTOBOOTH_SETTINGS', silent=True)
+
 
 ## Initializations 
 global sessions
 sessions = 0
 
-## Settings
-photos_per_session = 3
-countdown_duration = 5
+## Database methods
+def connect_db():
+    rv = sqlite3.connect(app.config['DATABASE'])
+    rv.row_factory = sqlite3.Row
+    return rv
 
 ## Welcome-Screen
 @app.route('/')
@@ -29,17 +46,15 @@ def photo_session(photo_id):
     templateData = {
       'session_id' : sessions,
       'photo_id': int(photo_id)+1,
-      'countdown': countdown_duration,
-      'max_photos': photos_per_session
+      'countdown': app.config['countdown_duration'],
+      'max_photos': app.config['photos_per_session']
       }
     return render_template('photo_session.html', **templateData)
 
 ## Window to select which photos to print
 @app.route('/printselection/', methods=['POST'])
 def print_selection():
-    return render_template('print.html', num_photos=photos_per_session)
+    return render_template('print.html', num_photos=app.config['photos_per_session'])
 
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
 
 

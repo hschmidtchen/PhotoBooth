@@ -1,0 +1,4 @@
+graft photobooth/templates
+graft photobooth/static
+graft photobooth/photos
+include photobooth/schema.sql
