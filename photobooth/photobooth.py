@@ -22,6 +22,8 @@ app.config.from_envvar('PHOTOBOOTH_SETTINGS', silent=True)
 global sessions
 sessions = 0
 
+global image_path
+
 ## Database methods
 def connect_db():
     rv = sqlite3.connect(app.config['DATABASE'])
@@ -54,7 +56,14 @@ def photo_session(photo_id):
 ## Window to select which photos to print
 @app.route('/printselection/', methods=['POST'])
 def print_selection():
-    return render_template('print.html', num_photos=app.config['photos_per_session'])
+    return render_template('printselection.html', num_photos=app.config['photos_per_session'])
+
+## Window calling to wait during printing process
+@app.route('/printing/', methods=['POST'])
+def print_selection():
+    ## printer communication goes here
+    global image_path
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
