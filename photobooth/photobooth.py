@@ -61,8 +61,11 @@ def print_selection():
 def printing():
     ## printer communication goes here
     global sessions
-    image_path = '/photos/full/print'+str(sessions)+'.jpg'
+    #image_path = '/photos/full/print'+str(sessions)+'.jpg'
+    image_path = '/photos/full/def_print.jpg'
     print(image_path)
+    subprocess.call('./canon-selphy-print/print-selphy-card ..'+image_path)
+
     return redirect('/')
 
 if __name__ == '__main__':
