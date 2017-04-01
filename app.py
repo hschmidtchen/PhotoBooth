@@ -59,7 +59,7 @@ def print_selection():
 
 ## Window calling to wait during printing process
 @app.route('/printing/', methods=['POST'])
-def print_selection():
+def printing():
     ## printer communication goes here
     global image_path
 
