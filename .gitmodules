@@ -1,0 +1,3 @@
+[submodule "photobooth/canon-selphy-print"]
+	path = photobooth/canon-selphy-print
+	url = https://github.com/abelits/canon-selphy-print.git
