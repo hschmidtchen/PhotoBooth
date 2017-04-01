@@ -62,5 +62,6 @@ def print_selection():
 def print_selection():
     ## printer communication goes here
     global image_path
+
     return redirect(url_for('index'))
 
