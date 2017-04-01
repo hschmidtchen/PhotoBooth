@@ -58,7 +58,7 @@ def print_selection():
     return render_template('printselection.html', num_photos=app.config['photos_per_session'])
 
 ## Window calling to wait during printing process
-@app.route('/printing/', methods=['POST'])
+@app.route('/printing/', methods=["GET","POST"])
 def printing():
     ## printer communication goes here
     global image_path
