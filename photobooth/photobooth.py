@@ -64,7 +64,7 @@ def printing():
     global sessions
     #image_path = '/photos/full/print'+str(sessions)+'.jpg'
     image_path = 'photos/print/def_print.jpg'
-    cmd='./canon-selphy-print/print-selphy-card '+image_path
+    cmd=["./canon-selphy-print/print-selphy-card", str(image_path)]
     print(cmd)
     subprocess.call(cmd)
     return redirect('/')
