@@ -30,7 +30,7 @@ def connect_db():
     return rv
 
 ## Welcome-Screen
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
 
