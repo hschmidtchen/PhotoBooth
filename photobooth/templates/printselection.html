@@ -8,7 +8,7 @@
 #Photos: {{num_photos}}
 <br>
 
-<form action="{{ url_for('printing') }}">
+<form action="{{ url_for('printing'), image_path='/photos/full/def_print.jpg'}}">
 	<div style="text-align: center"><input value="Drucken!" type="submit"></input></div>
 </form>
 
