@@ -31,7 +31,7 @@ def connect_db():
     return rv
 
 ## Welcome-Screen
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
 
