@@ -63,7 +63,7 @@ def print_selection():
 def printing():
     ## printer communication goes here
     global image_path
-    return redirect(url_for('index'))
+    return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
