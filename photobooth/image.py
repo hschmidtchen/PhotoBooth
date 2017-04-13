@@ -1,4 +1,5 @@
 import picamera
+from time import sleep
 
 class Image:
     """ Image stuffs """
