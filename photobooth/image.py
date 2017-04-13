@@ -8,7 +8,7 @@ class Image:
         """
         Snap an image and saves it to /static/images/image-**timestamp**.jpg
         """
-        with picamera.Picamera() as camera:
+        with picamera.PiCamera() as camera:
             camera.resolution = (2592, 1944)
             camera.start_preview()
             time.sleep(5)
