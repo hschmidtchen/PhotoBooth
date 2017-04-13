@@ -12,7 +12,8 @@ Photo: {{photo_id}}
 
 {% for img in range(photo_id) %}
 <div class="img" >
-	<img src="../photos/full/image_{{session_id}}_{{photo_id}}.jpg" style="width:500px;">
+	<img src="{{url_for('static', filename='/photos/full/image_1_1.jpg')}}" style="width:500px;">
+	<-- /static/photos/full/image_{{session_id}}_{{photo_id}}.jpg" --!>
 </div>
 
 {% endfor %}
