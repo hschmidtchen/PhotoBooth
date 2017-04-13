@@ -5,7 +5,8 @@ import subprocess
 import datetime
 from picamera import PiCamera
 from time import sleep
-import image
+from image import Image
+
 app = Flask(__name__) #create app instance
 app.config.from_object(__name__) #load config from this file
 
@@ -46,8 +47,7 @@ def instructions():
 ## Photo-Session (takes photos) --> updated for every photo
 @app.route('/photo_session/<photo_id>', methods=['POST'])
 def photo_session(photo_id):
-    import Image
-    Image.snap('photos/full/image_%s_%s.jpg' % sessions,int(photo_id))
+    Image.snap('photos/full/image_%s_%s.jpg' % (sessions,photo_id))
     templateData = {
       'session_id' : sessions,
       'photo_id': int(photo_id)+1,
