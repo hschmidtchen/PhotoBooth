@@ -10,9 +10,9 @@ Session: {{session_id}}
 Photo: {{photo_id}}
 <br>
 
-{% for img in range(photo_id-1) %}
+{% for img in range(photo_id) %}
 <div class="img" >
-	<img src="photos/full/image_{{session_id}}_{{photo_id}}.jpg" style="width:500px;">
+	<img src="../photos/full/image_{{session_id}}_{{photo_id}}.jpg" style="width:500px;">
 </div>
 
 {% endfor %}
