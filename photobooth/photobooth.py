@@ -24,8 +24,6 @@ app.config.from_envvar('PHOTOBOOTH_SETTINGS', silent=True)
 ## Initializations 
 global sessions
 sessions = 0
-camera = PiCamera()
-camera.resolution = (2592, 1944)
 
 ## Database methods
 def connect_db():
