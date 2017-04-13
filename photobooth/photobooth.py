@@ -5,7 +5,7 @@ import subprocess
 import datetime
 from picamera import PiCamera
 from time import sleep
-import Image
+import image
 app = Flask(__name__) #create app instance
 app.config.from_object(__name__) #load config from this file
 
