@@ -10,10 +10,12 @@ Session: {{session_id}}
 Photo: {{photo_id}}
 <br>
 
+<div id="images">
 {% for img in range(photo_id) %}
 <img src="{{url_for('static', filename='photos/full/')}}image_{{session_id}}_{{img}}.jpg">
 
 {% endfor %}
+</div>
 {% if photo_id < max_photos %}
 
 <form action="{{ url_for('photo_session', photo_id=photo_id ) }}" method=post>
