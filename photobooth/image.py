@@ -7,7 +7,7 @@ class Image:
     @staticmethod
     def snap(filename):
         """
-        Snap an image and saves it to /static/images/image-**timestamp**.jpg
+        Snap an image and saves it to filename
         """
         with picamera.PiCamera() as camera:
             camera.resolution = (2592, 1944)

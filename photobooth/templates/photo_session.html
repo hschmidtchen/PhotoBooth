@@ -9,6 +9,13 @@ Session: {{session_id}}
 <br>
 Photo: {{photo_id}}
 <br>
+
+{% for img in range(int(photo_id)-1) %}
+<div class="img" >
+	<img src="photos/full/image_{{session_id}}_{{photo_id}}.jpg" style="width:500px;">
+</div>
+
+{% endfor %}
 {% if photo_id < max_photos %}
 
 <form action="{{ url_for('photo_session', photo_id=photo_id ) }}" method=post>
