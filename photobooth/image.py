@@ -11,7 +11,7 @@ class Image:
         """
         with picamera.PiCamera() as camera:
             camera.resolution = (2592, 1944)
-            camera.start_preview(fullscreen=False, window=(0,0,800,480), crop=(0,205,2592,1555))
+            camera.start_preview(fullscreen=False, window=(0,0,800,480), crop=(0,195,2592,1556))
             sleep(5)
             camera.capture(filename)
             camera.stop_preview()
