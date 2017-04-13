@@ -3,6 +3,8 @@ import sqlite3
 from flask import Flask, render_template, redirect
 import subprocess
 import datetime
+from picamera import PiCamera
+from time import sleep
 
 app = Flask(__name__) #create app instance
 app.config.from_object(__name__) #load config from this file
@@ -22,6 +24,8 @@ app.config.from_envvar('PHOTOBOOTH_SETTINGS', silent=True)
 ## Initializations 
 global sessions
 sessions = 0
+camera = PiCamera()
+camera.resolution = (2592, 1944)
 
 ## Database methods
 def connect_db():
@@ -44,6 +48,10 @@ def instructions():
 ## Photo-Session (takes photos) --> updated for every photo
 @app.route('/photo_session/<photo_id>', methods=['POST'])
 def photo_session(photo_id):
+    camera.start_preview()
+    sleep(5)
+    camera.capture('photos/full/image_%s_%s.jpg' % sessions,int(photo_id))
+    camera.stop_preview()
     templateData = {
       'session_id' : sessions,
       'photo_id': int(photo_id)+1,
