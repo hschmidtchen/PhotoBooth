@@ -3,7 +3,8 @@ import picamera
 class Image:
     """ Image stuffs """
 
-    def snap(self,filename):
+    @staticmethod
+    def snap(filename):
         """
         Snap an image and saves it to /static/images/image-**timestamp**.jpg
         """
