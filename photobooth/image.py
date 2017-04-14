@@ -1,5 +1,6 @@
 import picamera
 from time import sleep
+import subprocess
 
 class Image:
     """ Image stuffs """
