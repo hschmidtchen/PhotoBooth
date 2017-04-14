@@ -79,6 +79,8 @@ def determine_session():
     for file in glob.glob('static/photos/full/image_*_1.jpg'):
         if int(file[25:-6])>max:
             max = int(file[25:-6])
+            print(file)
+            print(file[25:-6])
     return max + 1
 
 if __name__ == '__main__':
