@@ -17,7 +17,7 @@ app.config.update(dict(
     SECRET_KEY='devkey',
     USERNAME='admin',
     PASSWORD='default',
-    photos_per_session = 3,
+    photos_per_session = 1,
     countdown_duration = 5
 ))
 app.config.from_envvar('PHOTOBOOTH_SETTINGS', silent=True)
@@ -66,7 +66,8 @@ def print_selection():
 def printing():
     ## printer communication goes here
     global sessions
-    image_path = 'static/photos/print/print_'+str(sessions)+'.jpg'
+    #image_path = 'static/photos/print/print_'+str(sessions)+'.jpg'
+    image_path = 'static/photos/full/image_'+str(sessions)+'_0+.jpg'
     cmd=["./canon-selphy-print/print-selphy-card", str(image_path)]
     print(cmd)
     subprocess.call(cmd)
