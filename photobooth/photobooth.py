@@ -42,7 +42,8 @@ def index():
 def instructions():
     global sessions
     sessions=sessions+1
-    return render_template('instructions.html',session_id=sessions)
+    #return render_template('instructions.html',session_id=sessions)
+    return redirect(url_for('photo_session',photo_id=0))
 
 ## Photo-Session (takes photos) --> updated for every photo
 @app.route('/photo_session/<photo_id>', methods=['POST'])
