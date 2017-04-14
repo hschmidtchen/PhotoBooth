@@ -21,4 +21,4 @@ class Image:
             subprocess.call(cmd)
             camera.stop_preview()
 
-        return filename
+        return picam_path
