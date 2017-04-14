@@ -15,6 +15,11 @@ Photo: {{photo_id}}
 <img src="{{url_for('static', filename='photos/full/')}}image_{{session_id}}_{{img}}.jpg">
 
 {% endfor %}
+	<br>
+{% for img in range(photo_id) %}
+<img src="{{url_for('static', filename='photos/full/')}}dlr_image_{{session_id}}_{{img}}.jpg">
+
+{% endfor %}
 </div>
 {% if photo_id < max_photos %}
 
