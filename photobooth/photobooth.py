@@ -6,6 +6,7 @@ import datetime
 from picamera import PiCamera
 from time import sleep
 from image import Image
+import
 
 app = Flask(__name__) #create app instance
 app.config.from_object(__name__) #load config from this file
@@ -24,7 +25,6 @@ app.config.from_envvar('PHOTOBOOTH_SETTINGS', silent=True)
 
 ## Initializations 
 global sessions
-sessions = 0
 
 ## Database methods
 def connect_db():
@@ -72,7 +72,12 @@ def printing():
     subprocess.call(cmd)
     return redirect('/')
 
+def determine_session():
+    for file in glob.glob('static/photos/full/image_*_1.jpg'):
+        print(file)
+
 if __name__ == '__main__':
+    sessions = determine_session()
     app.run(debug=True, host='0.0.0.0')
 
 
