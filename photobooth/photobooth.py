@@ -73,7 +73,7 @@ def printing():
     cmd=["./canon-selphy-print/print-selphy-card", str(image_path)]
     print(cmd)
     subprocess.call(cmd)
-    sleeo(15)
+    sleep(15)
     return redirect('/')
 
 def determine_session():
