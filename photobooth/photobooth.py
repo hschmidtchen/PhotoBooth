@@ -61,6 +61,7 @@ def photo_session(photo_id):
 @app.route('/printselection/', methods=['POST'])
 def print_selection():
     render_template('printselection.html', num_photos=app.config['photos_per_session'])
+    sleep(2)
     return redirect('/printing/')
 
 ## Window calling to wait during printing process
