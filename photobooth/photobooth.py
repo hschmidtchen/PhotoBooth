@@ -60,7 +60,8 @@ def photo_session(photo_id):
 ## Window to select which photos to print
 @app.route('/printselection/', methods=['POST'])
 def print_selection():
-    return render_template('printselection.html', num_photos=app.config['photos_per_session'])
+    render_template('printselection.html', num_photos=app.config['photos_per_session'])
+    return redirect('/printing/')
 
 ## Window calling to wait during printing process
 @app.route('/printing/', methods=['GET', 'POST'])
@@ -72,13 +73,12 @@ def printing():
     cmd=["./canon-selphy-print/print-selphy-card", str(image_path)]
     print(cmd)
     subprocess.call(cmd)
+    sleeo(15)
     return redirect('/')
 
 def determine_session():
     max = -1
     for file in glob.glob('static/photos/full/image_*_0.jpg'):
-        print(file)
-        print(file[25:-6])
         if int(file[25:-6])>max:
             max = int(file[25:-6])
 
