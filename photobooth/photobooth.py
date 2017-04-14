@@ -47,7 +47,7 @@ def instructions():
 ## Photo-Session (takes photos) --> updated for every photo
 @app.route('/photo_session/<photo_id>', methods=['POST'])
 def photo_session(photo_id):
-    Image.snap('static/photos/full/image_%s_%s.jpg' % (sessions,photo_id))
+    Image.snap(sessions,photo_id)
     templateData = {
       'session_id' : sessions,
       'photo_id': int(photo_id)+1,
