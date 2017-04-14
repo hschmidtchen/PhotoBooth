@@ -74,7 +74,7 @@ def printing():
 
 def determine_session():
     for file in glob.glob('static/photos/full/image_*_1.jpg'):
-        print(file)
+        print(file[26:-6])
 
 if __name__ == '__main__':
     sessions = determine_session()
