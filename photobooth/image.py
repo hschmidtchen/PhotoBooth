@@ -15,8 +15,8 @@ class Image:
             camera.start_preview(fullscreen=False, window=(0,0,800,480), crop=(0,195,2592,1556))
             sleep(5)
             camera.capture(filename)
-            dlr_filename="drl_"+filename
-            cmd = "gphoto2 --capture-image-and-download --filename "+str(dlr_filename)
+            dlr_filename="static/photos/full/dlr_image.jpg"
+            cmd = "gphoto2 --capture-image-and-download --filename "+dlr_filename
             print(cmd)
             subprocess.call(cmd)
             camera.stop_preview()
