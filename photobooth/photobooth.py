@@ -46,7 +46,7 @@ def instructions():
     return redirect(url_for('photo_session',photo_id=0))
 
 ## Photo-Session (takes photos) --> updated for every photo
-@app.route('/photo_session/<photo_id>', methods=['POST'])
+@app.route('/photo_session/<photo_id>', methods=['GET','POST'])
 def photo_session(photo_id):
     Image.snap(sessions,photo_id)
     templateData = {
