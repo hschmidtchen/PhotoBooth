@@ -67,7 +67,7 @@ def printing():
     ## printer communication goes here
     global sessions
     #image_path = 'static/photos/print/print_'+str(sessions)+'.jpg'
-    image_path = 'static/photos/full/image_'+str(sessions)+'_0+.jpg'
+    image_path = 'static/photos/full/image_'+str(sessions)+'_0.jpg'
     cmd=["./canon-selphy-print/print-selphy-card", str(image_path)]
     print(cmd)
     subprocess.call(cmd)
