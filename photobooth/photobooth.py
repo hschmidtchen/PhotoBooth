@@ -47,7 +47,7 @@ def instructions():
     return redirect(url_for('session_start'))
 
 ## Window to select which photos to print
-@app.route('/session_start/', methods=['POST'])
+@app.route('/session_start/', methods=['GET','POST'])
 def session_start():
     return render_template('session_start.html')
 
