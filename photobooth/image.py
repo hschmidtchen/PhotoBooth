@@ -30,11 +30,14 @@ class Image:
         """
         with picamera.PiCamera() as camera:
             camera.resolution = (2592, 1944)
-            camera.annotate_text_size = 160
+            ovl=np.zeros((1592, 1944, 3, 5), dtype=np.uint8)
+            ovl[700:750,:,:,:]=0xff
+            ovl[:,900:1000,:,:]=0xff
             camera.start_preview(fullscreen=False, window=(0, 5, 800, 480), crop=(180, 385, 2232, 1336))
             for i in range(5):
-                camera.annotate_text = "%d" % int(5 - i)
+                camera.add_overlay(ovl[:,:,:,i], alpha=64)
                 sleep(1)
+            camera.remove_overlay()
             dlr_path = "/home/pi/photobooth/photobooth/static/photos/full/image_%s_%s.jpg" % (session_id, photo_id)
             dlr_path2 = "/home/pi/photobooth/photobooth/static/photos/print/image_%s_%s.jpg" % (session_id, photo_id)
             cmd = ["gphoto2", "--capture-image-and-download", "--filename", dlr_path]
