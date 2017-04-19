@@ -1,6 +1,7 @@
 import picamera
 from time import sleep
 import subprocess
+import numpy as np
 
 class Image:
     """ Image stuffs """
