@@ -34,10 +34,10 @@ class Image:
             ovl=np.zeros((2592, 1952, 3), dtype=np.uint8)
             ovl[700:750,:,:]=0xff
             ovl[:,900:1000,:]=0xff
-            camera.start_preview(fullscreen=False, window=(0, 5, 800, 480), crop=(180, 385, 2232, 1336))
+            camera.start_preview(fullscreen=False, hflip=True, window=(0, 5, 800, 480), crop=(180, 385, 2232, 1336))
             for i in range(5):
                 tmp=ovl[:,:,:]
-                o=camera.add_overlay(np.getbuffer(tmp), alpha=64)
+                o=camera.add_overlay(np.getbuffer(tmp), alpha=120, layer=3)
                 sleep(1)
                 camera.remove_overlay(o)
             dlr_path = "/home/pi/photobooth/photobooth/static/photos/full/image_%s_%s.jpg" % (session_id, photo_id)
