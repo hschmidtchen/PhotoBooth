@@ -36,8 +36,14 @@ class Image:
                 camera.annotate_text = "%d" % int(5 - i)
                 sleep(1)
             dlr_path = "/home/pi/photobooth/photobooth/static/photos/full/image_%s_%s.jpg" % (session_id, photo_id)
+            dlr_path2 = "/home/pi/photobooth/photobooth/static/photos/print/image_%s_%s.jpg" % (session_id, photo_id)
             cmd = ["gphoto2", "--capture-image-and-download", "--filename", dlr_path]
             subprocess.call(cmd)
             camera.stop_preview()
+
+            #imagemagic to cut the image
+            cmd = ["imagemagick", dlr_path, "convert", "-crop", "3888x2430+0+80", dlr_path2 ]
+            print(cmd)
+            subprocess.call(cmd)
 
         return dlr_path
