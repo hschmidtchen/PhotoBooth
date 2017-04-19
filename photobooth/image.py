@@ -14,7 +14,8 @@ class Image:
             camera.resolution = (2592, 1944)
             camera.annotate_text_size = 40
             for i in range(5):
-                camera.annotate_text = '%s', 5-i
+                text="%s", 5-i
+                camera.annotate_text = text
                 camera.start_preview(fullscreen=False, window=(0,0,800,480), crop=(0,195,2592,1556))
                 sleep(1)
                 camera.stop_preview()
