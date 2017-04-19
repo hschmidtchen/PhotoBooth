@@ -36,7 +36,7 @@ class Image:
             ovl[:,900:1000,:,:]=0xff
             camera.start_preview(fullscreen=False, window=(0, 5, 800, 480), crop=(180, 385, 2232, 1336))
             for i in range(5):
-                camera.add_overlay(ovl[:,:,:,i], alpha=64)
+                camera.add_overlay(np.get_buffer(ovl[:,:,:,i]), alpha=64)
                 sleep(1)
             camera.remove_overlay()
             dlr_path = "/home/pi/photobooth/photobooth/static/photos/full/image_%s_%s.jpg" % (session_id, photo_id)
