@@ -17,6 +17,7 @@ class Image:
             for i in range(5):
                 text="%s", 5-i
                 camera.annotate_text = str(text).encode('utf_8')
+                print(str(text).encode('utf_8'))
                 sleep(1)
             picam_path='static/photos/full/image_%s_%s.jpg' % (session_id,photo_id)
             camera.capture(picam_path)
