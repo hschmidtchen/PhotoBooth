@@ -15,7 +15,7 @@ class Image:
             camera.annotate_text_size = 40
             for i in range(5):
                 text="%s", 5-i
-                camera.annotate_text = text
+                camera.annotate_text = text, All2.encode('utf_8')
                 camera.start_preview(fullscreen=False, window=(0,0,800,480), crop=(0,195,2592,1556))
                 sleep(1)
                 camera.stop_preview()
