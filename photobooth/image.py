@@ -32,8 +32,8 @@ class Image:
         with picamera.PiCamera() as camera:
             camera.resolution = (2592, 1944)
             ovl=np.zeros((1592, 1944, 3), dtype=np.uint8)
-            ovl[700:750,:,:,:]=0xff
-            ovl[:,900:1000,:,:]=0xff
+            ovl[700:750,:,:]=0xff
+            ovl[:,900:1000,:]=0xff
             camera.start_preview(fullscreen=False, window=(0, 5, 800, 480), crop=(180, 385, 2232, 1336))
             for i in range(5):
                 tmp=ovl[:,:,:]
