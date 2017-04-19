@@ -31,7 +31,7 @@ class Image:
         with picamera.PiCamera() as camera:
             camera.resolution = (2592, 1944)
             camera.annotate_text_size = 160
-            camera.start_preview(fullscreen=False, window=(0, 0, 800, 480), crop=(0, 225, 2592, 1526))
+            camera.start_preview(fullscreen=False, window=(0, 0, 800, 480), crop=(0, 285, 2592, 1476))
             for i in range(5):
                 camera.annotate_text = "%d" % int(5 - i)
                 sleep(1)
