@@ -1,7 +1,6 @@
 import picamera
 from time import sleep
 import subprocess
-import numpy as np
 
 class Image:
     """ Image stuffs """
@@ -16,8 +15,13 @@ class Image:
             camera.annotate_text_size = 160
             camera.start_preview(fullscreen=False, window=(0, 0, 800, 480), crop=(0, 195, 2592, 1556))
             for i in range(5):
-                camera.annotate_text = "%d" % int(5-i)
+                im_path="/home/pi/photobooth/photobooth/static/icons/%d.png" % (5-i)
+                cmd=["/home/pi/raspidmx/pngview/pngview", "-b", "0", "-l", "3", im_path]
+                subprocess.Popen(cmd)
                 sleep(1)
+                cmd = ["killall", "pngview"]
+                subprocess.call(cmd)
+
             picam_path='static/photos/full/image_%s_%s.jpg' % (session_id,photo_id)
             camera.capture(picam_path)
             camera.stop_preview()
@@ -31,15 +35,12 @@ class Image:
         """
         with picamera.PiCamera() as camera:
             camera.resolution = (2592, 1944)
-            ovl=np.zeros((2592, 1952, 3), dtype=np.uint8)
-            ovl[700:750,:,:]=0xff
-            ovl[:,900:1000,:]=0xff
             camera.start_preview(fullscreen=False, hflip=True, window=(0, 5, 800, 480), crop=(180, 385, 2232, 1336))
             for i in range(5):
-                tmp=ovl[:,:,:]
-                o=camera.add_overlay(np.getbuffer(tmp), alpha=120, layer=3)
+                cmd =["./home/pi/raspidmx/pngview/pngview", "-b", "0", "-l", "3", "/usr/share/raspberrypi-artwork/raspberry-pi-logo-small.png"]
+                subprocess.call(cmd)
                 sleep(1)
-                camera.remove_overlay(o)
+
             dlr_path = "/home/pi/photobooth/photobooth/static/photos/full/image_%s_%s.jpg" % (session_id, photo_id)
             dlr_path2 = "/home/pi/photobooth/photobooth/static/photos/print/image_%s_%s.jpg" % (session_id, photo_id)
             cmd = ["gphoto2", "--capture-image-and-download", "--filename", dlr_path]
