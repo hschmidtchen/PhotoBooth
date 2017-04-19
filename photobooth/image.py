@@ -42,7 +42,7 @@ class Image:
             camera.stop_preview()
 
             #imagemagic to cut the image
-            cmd = ["imagemagick", dlr_path, "convert", "-crop", "3888x2430+0+80", dlr_path2 ]
+            cmd = ["convert", dlr_path, "-crop", "3888x2430+0+160", dlr_path2 ]
             print(cmd)
             subprocess.call(cmd)
 
