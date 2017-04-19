@@ -15,11 +15,7 @@ Photo: {{photo_id}}
 <img src="{{url_for('static', filename='photos/full/')}}image_{{session_id}}_{{img}}.jpg">
 
 {% endfor %}
-	<br>
-{% for img in range(photo_id) %}
-<img src="{{url_for('static', filename='photos/full/')}}dlr_image_{{session_id}}_{{img}}.jpg">
 
-{% endfor %}
 </div>
 {% if photo_id < max_photos %}
 
@@ -30,9 +26,11 @@ Photo: {{photo_id}}
 {% else %}
 
 <form action="{{ url_for('print_selection') }}" method=post>
-	<div style="text-align: center"><button name="btn_start" type="submit">Druck!</button></div>
+	<div style="text-align: center"><button name="btn_start" type="submit">Drucken</button></div>
 </form>
-
+<form action="{{ url_for('/') }}" method=post>
+	<div style="text-align: center"><button name="btn_restart" type="submit">Verwerfen</button></div>
+</form>
 {% endif %}
 </body>
 </html>

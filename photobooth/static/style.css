@@ -8,3 +8,7 @@ body {
   height: 200px;
   float: left;
 }
+
+button {
+    font-size: 50
+}
