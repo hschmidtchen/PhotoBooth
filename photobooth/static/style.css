@@ -9,8 +9,10 @@ body {
 }
 
 #print_images img {
-  width: 650px;
-  float: left;
+  height: 440px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto
 }
 
 button {
