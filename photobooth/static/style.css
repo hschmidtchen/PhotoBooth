@@ -8,6 +8,11 @@ body {
   float: left;
 }
 
+#images img {
+  width: 700px;
+  float: left;
+}
+
 button {
     font-size: 50
 }

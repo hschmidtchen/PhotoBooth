@@ -4,11 +4,12 @@
 <link rel="stylesheet" href='/static/style.css' />
 </head>
 <body>
-<div style="text-align: center"><h1>Photo-Session</h1></div>
+<!--<div style="text-align: center"><h1>Photo-Session</h1></div>-->
 <br>
 Photo wird gedruckt...
+<div id="print_images">
 <img src="{{url_for('static', filename='photos/full/')}}image_{{session_id}}_0.jpg">
-
+</div>
 <br>
 
 </body>
