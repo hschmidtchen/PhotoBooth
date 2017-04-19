@@ -40,4 +40,4 @@ class Image:
             subprocess.call(cmd)
             camera.stop_preview()
 
-        return picam_path
+        return dlr_path
