@@ -12,7 +12,6 @@ class Image:
         """
         with picamera.PiCamera() as camera:
             camera.resolution = (2592, 1944)
-            camera.annotate_text_size = 160
             camera.start_preview(fullscreen=False, window=(0, 0, 800, 480), crop=(0, 195, 2592, 1556))
             for i in range(5):
                 im_path="/home/pi/photobooth/photobooth/static/icons/%d.png" % (5-i)
@@ -37,9 +36,12 @@ class Image:
             camera.resolution = (2592, 1944)
             camera.start_preview(fullscreen=False, hflip=True, window=(0, 5, 800, 480), crop=(180, 385, 2232, 1336))
             for i in range(5):
-                cmd =["./home/pi/raspidmx/pngview/pngview", "-b", "0", "-l", "3", "/usr/share/raspberrypi-artwork/raspberry-pi-logo-small.png"]
-                subprocess.call(cmd)
+                im_path = "/home/pi/photobooth/photobooth/static/icons/%d.png" % (5 - i)
+                cmd = ["/home/pi/raspidmx/pngview/pngview", "-b", "0", "-l", "3", im_path]
+                subprocess.Popen(cmd)
                 sleep(1)
+                cmd = ["killall", "pngview"]
+                subprocess.call(cmd)
 
             dlr_path = "/home/pi/photobooth/photobooth/static/photos/full/image_%s_%s.jpg" % (session_id, photo_id)
             dlr_path2 = "/home/pi/photobooth/photobooth/static/photos/print/image_%s_%s.jpg" % (session_id, photo_id)
