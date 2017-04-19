@@ -44,7 +44,12 @@ def instructions():
     global sessions
     sessions=sessions+1
     #return render_template('instructions.html',session_id=sessions)
-    return redirect(url_for('photo_session',photo_id=0))
+    return redirect(url_for('session_start'))
+
+## Window to select which photos to print
+@app.route('/session_start/', methods=['POST'])
+def print_selection():
+    return render_template('session_start.html')
 
 ## Photo-Session (takes photos) --> updated for every photo
 @app.route('/photo_session/<photo_id>', methods=['GET','POST'])
@@ -77,7 +82,7 @@ def printing():
     cmd=["./canon-selphy-print/print-selphy-card", str(image_path)]
     print(cmd)
     subprocess.call(cmd)
-    sleep(30)
+    sleep(50)
     return redirect('/')
 
 def determine_session():
