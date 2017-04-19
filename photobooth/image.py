@@ -15,7 +15,7 @@ class Image:
             camera.annotate_text_size = 160
             camera.start_preview(fullscreen=False, window=(0, 0, 800, 480), crop=(0, 195, 2592, 1556))
             for i in range(5):
-                camera.annotate_text = "%d" % int(5)-i
+                camera.annotate_text = "%d" % int(5-i)
                 sleep(1)
             picam_path='static/photos/full/image_%s_%s.jpg' % (session_id,photo_id)
             camera.capture(picam_path)
