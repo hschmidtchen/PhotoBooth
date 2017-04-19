@@ -48,7 +48,7 @@ def instructions():
 
 ## Window to select which photos to print
 @app.route('/session_start/', methods=['POST'])
-def print_selection():
+def session_start():
     return render_template('session_start.html')
 
 ## Photo-Session (takes photos) --> updated for every photo
