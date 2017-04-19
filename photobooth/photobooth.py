@@ -25,6 +25,7 @@ app.config.from_envvar('PHOTOBOOTH_SETTINGS', silent=True)
 
 ## Initializations 
 global sessions
+use_dlr = True
 
 ## Database methods
 def connect_db():
@@ -48,7 +49,11 @@ def instructions():
 ## Photo-Session (takes photos) --> updated for every photo
 @app.route('/photo_session/<photo_id>', methods=['GET','POST'])
 def photo_session(photo_id):
-    Image.snap(sessions,photo_id)
+    global use_dlr
+    if use_dlr:
+        Image.snap_dlr(sessions, photo_id)
+    else:
+        Image.snap(sessions,photo_id)
     templateData = {
       'session_id' : sessions,
       'photo_id': int(photo_id)+1,
