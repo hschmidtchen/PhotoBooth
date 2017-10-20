@@ -123,13 +123,13 @@ if [ -f "${1}" ]
 		  -filter Gaussian -resize "${imggeom}" \
 		  -gravity center -extent "1024x640" "${1}" png:- | \
               composite "${bordermaskfile}" png:- png:- | \
-              convert -page "+34+8" -background white -flatten \
+              convert -page "+34+13" -background white -flatten \
 		      -extent "1088x668" png:- -quality 97 jpg:-
       else
           convert ${rotateopt} ${rot} -define filter:blur=0.8 \
 		  -filter Gaussian -resize "${imggeom}" \
 		  -gravity center -extent "1024x640" "${1}" png:- | \
-              convert -page "+34+8" -background white -flatten \
+              convert -page "+34+13" -background white -flatten \
 		      -extent "1088x668" png:- -quality 97 jpg:- 
     fi
     ) | \
