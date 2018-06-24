@@ -26,6 +26,7 @@ app.config.from_envvar('PHOTOBOOTH_SETTINGS', silent=True)
 ## Initializations 
 global sessions
 use_dlr = True
+live_preview = False
 
 ## Database methods
 def connect_db():
@@ -56,7 +57,10 @@ def session_start():
 def photo_session(photo_id):
     global use_dlr
     if use_dlr:
-        Image.snap_dlr(sessions, photo_id)
+        if live_preview:
+            Image.snap_dlr_live(sessions, photo_id)
+        else:
+            Image.snap_dlr(sessions, photo_id)
     else:
         Image.snap(sessions,photo_id)
     templateData = {
